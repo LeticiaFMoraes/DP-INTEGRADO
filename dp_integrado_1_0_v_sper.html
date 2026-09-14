@@ -475,12 +475,19 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'dp-integrado-vesper-v3';
-        let firebaseConfig = {};
-        if (typeof __firebase_config !== 'undefined') { firebaseConfig = JSON.parse(__firebase_config); }
+        const appId = 'dp-control-d3528';
+        const firebaseConfig = {
+            apiKey: "AIzaSyAoVHy9V979jz9hKcNZuno2uSRjJqDc38w",
+            authDomain: "dp-control-d3528.firebaseapp.com",
+            projectId: "dp-control-d3528",
+            storageBucket: "dp-control-d3528.firebasestorage.app",
+            messagingSenderId: "814774407855",
+            appId: "1:814774407855:web:e415ec026c620b041fba5a",
+            measurementId: "G-DLEFDJWRHS"
+        };
         
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
@@ -501,8 +508,7 @@
 
         async function iniciarApp() {
             try {
-                if (typeof __initial_auth_token !== 'undefined') await signInWithCustomToken(auth, __initial_auth_token);
-                else await signInAnonymously(auth);
+                await signInAnonymously(auth);
 
                 const basePath = ['artifacts', appId, 'public', 'data']; 
 
