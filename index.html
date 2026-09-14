@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DP Integrado 1.0 | Vésper Transportes</title>
+    <title>DP Integrado 2.0 | Vésper Transportes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -31,7 +31,7 @@
             </div>
             <div class="flex-1">
                 <h1 class="text-lg font-bold text-white tracking-tight uppercase leading-none mt-1">Vésper</h1>
-                <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mt-1">DP Integrado 1.0</p>
+                <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mt-1">DP Integrado 2.0</p>
             </div>
             <button onclick="window.toggleSidebar()" class="text-slate-400 hover:text-white transition"><i class="fa-solid fa-xmark text-xl"></i></button>
         </div>
@@ -64,17 +64,16 @@
 
         <div class="p-4 bg-slate-950 border-t border-slate-800">
             <div class="flex items-center gap-3 px-2">
-                <div class="w-9 h-9 rounded-full bg-emerald-900 flex items-center justify-center border border-emerald-700 text-emerald-300 font-bold text-xs">LM</div>
+                <div class="w-9 h-9 rounded-full bg-emerald-900 flex items-center justify-center border border-emerald-700 text-emerald-300 font-bold text-xs" id="statusNuvemIcon">LM</div>
                 <div class="flex-1 overflow-hidden">
                     <p class="text-xs font-bold text-white truncate">Letícia Francine Moraes</p>
-                    <p class="text-[10px] text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-cloud text-[8px]"></i> Nuvem Conectada</p>
+                    <p id="statusNuvemTexto" class="text-[10px] text-emerald-400 flex items-center gap-1 transition-colors"><i class="fa-solid fa-cloud text-[8px]"></i> Nuvem Conectada</p>
                 </div>
             </div>
         </div>
     </aside>
 
     <main class="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50 relative w-full">
-        
         <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-4 sm:px-6 shadow-sm z-10 w-full">
             <div class="flex items-center gap-4">
                 <button onclick="window.toggleSidebar()" class="text-slate-500 hover:text-emerald-700 transition p-2 bg-slate-100 rounded-xl"><i class="fa-solid fa-bars text-lg"></i></button>
@@ -90,10 +89,7 @@
         <div class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 scrollbar-hide pb-24 w-full">
             
             <div id="secao-demandas" class="space-y-6 fade-in max-w-7xl mx-auto">
-                
-                <!-- PAINEL DO DIA & STATUS DA SEMANA -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- PAINEL DO DIA -->
                     <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 rounded-2xl shadow-md border border-slate-700 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-center mb-3">
@@ -101,13 +97,9 @@
                                 <span id="labelDataHoje" class="text-xs text-emerald-300 font-bold"></span>
                             </div>
                             <h3 class="text-lg font-bold text-white mb-1">Vencimentos para Hoje</h3>
-                            <div id="painelHojeLista" class="space-y-2 mt-4 max-h-40 overflow-y-auto scrollbar-hide">
-                                <!-- Preenchido dinamicamente -->
-                            </div>
+                            <div id="painelHojeLista" class="space-y-2 mt-4 max-h-40 overflow-y-auto scrollbar-hide"></div>
                         </div>
                     </div>
-
-                    <!-- STATUS DA SEMANA -->
                     <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-center mb-3">
@@ -115,9 +107,7 @@
                                 <span id="labelPeriodoSemana" class="text-xs text-slate-500 font-bold"></span>
                             </div>
                             <h3 class="text-base font-bold text-slate-800 mb-4">Prazos e Entregas nos Próximos 7 Dias</h3>
-                            <div id="painelSemanaGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                <!-- Preenchido dinamicamente -->
-                            </div>
+                            <div id="painelSemanaGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
                         </div>
                     </div>
                 </div>
@@ -130,10 +120,8 @@
                     <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
                         <select id="filtroFilial" onchange="window.renderizarDemandas()" class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none cursor-pointer font-medium">
                             <option value="">Todas Filiais</option>
-                            <option value="Atibaia">Atibaia</option>
-                            <option value="Jundiaí">Jundiaí</option>
-                            <option value="Limeira">Limeira</option>
-                            <option value="Americana">Americana</option>
+                            <option value="Atibaia">Atibaia</option><option value="Jundiaí">Jundiaí</option>
+                            <option value="Limeira">Limeira</option><option value="Americana">Americana</option>
                         </select>
                         <select id="filtroStatus" onchange="window.renderizarDemandas()" class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-emerald-500 outline-none cursor-pointer font-medium">
                             <option value="Ativos">Ocultar Concluídos/Cancelados</option>
@@ -148,9 +136,7 @@
                 <div id="gridDemandas" class="grid grid-cols-1 xl:grid-cols-2 gap-6"></div>
                 
                 <div id="vazioDemandas" class="hidden py-16 text-center flex flex-col items-center justify-center bg-white rounded-2xl border border-slate-200 border-dashed">
-                    <div class="bg-slate-50 w-20 h-20 rounded-full flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-inbox text-3xl text-slate-300"></i>
-                    </div>
+                    <div class="bg-slate-50 w-20 h-20 rounded-full flex items-center justify-center mb-4"><i class="fa-solid fa-inbox text-3xl text-slate-300"></i></div>
                     <p class="font-bold text-slate-600 text-lg">Tudo limpo por aqui!</p>
                     <p class="text-sm text-slate-400 mt-1">Nenhuma demanda ativa localizada com estes filtros.</p>
                 </div>
@@ -159,8 +145,8 @@
             <div id="secao-calendario" class="hidden space-y-6 fade-in h-full flex flex-col max-w-7xl mx-auto">
                 <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div>
-                        <h3 class="font-bold text-slate-800 text-lg">Calendário Operacional & Rotinas Fixas</h3>
-                        <p class="text-xs text-slate-500 font-medium">Prazos limites de Rescisões, Férias, VA, Prêmio e Tomadores.</p>
+                        <h3 class="font-bold text-slate-800 text-lg">Calendário Operacional (Master)</h3>
+                        <p class="text-xs text-slate-500 font-medium">Feriados mapeados. Clique em um dia para ver detalhes ou agendar tarefas.</p>
                     </div>
                     <div class="flex items-center gap-4 bg-slate-50 p-1.5 rounded-xl border border-slate-200">
                         <button onclick="window.mudarMesCalendario(-1)" class="p-2 text-slate-500 hover:text-emerald-600 transition bg-white rounded-lg shadow-sm border border-slate-100"><i class="fa-solid fa-chevron-left"></i></button>
@@ -170,42 +156,26 @@
                 </div>
                 <div class="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col min-h-[600px]">
                     <div class="grid grid-cols-7 bg-slate-50 border-b border-slate-200">
-                        <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Dom</div>
-                        <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Seg</div>
-                        <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Ter</div>
-                        <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Qua</div>
-                        <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Qui</div>
-                        <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Sex</div>
+                        <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Dom</div><div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Seg</div>
+                        <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Ter</div><div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Qua</div>
+                        <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Qui</div><div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Sex</div>
                         <div class="py-3 text-center text-xs font-bold text-slate-500 uppercase">Sáb</div>
                     </div>
-                    <div id="gridDiasCalendario" class="grid grid-cols-7 flex-1 auto-rows-fr">
-                        <!-- Gerado via JS -->
-                    </div>
+                    <div id="gridDiasCalendario" class="grid grid-cols-7 flex-1 auto-rows-fr"></div>
                 </div>
             </div>
 
             <div id="secao-tarefas" class="hidden space-y-6 fade-in max-w-7xl mx-auto">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
                     <div class="flex justify-between items-center border-b border-slate-100 pb-4">
-                        <div>
-                            <h2 class="text-lg font-bold text-slate-800">Cálculos e Tarefas Extras</h2>
-                            <p class="text-xs text-slate-500 mt-1 font-medium">Delegue e gerencie atividades avulsas.</p>
-                        </div>
-                        <button onclick="window.abrirModalTarefa()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-sm font-bold transition shadow-md flex items-center gap-2">
-                            <i class="fa-solid fa-plus"></i> <span class="hidden sm:inline">Nova Tarefa</span>
-                        </button>
+                        <div><h2 class="text-lg font-bold text-slate-800">Cálculos e Tarefas Extras</h2><p class="text-xs text-slate-500 mt-1 font-medium">Delegue e gerencie atividades avulsas.</p></div>
+                        <button onclick="window.abrirModalTarefa()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-sm font-bold transition shadow-md flex items-center gap-2"><i class="fa-solid fa-plus"></i> <span class="hidden sm:inline">Nova Tarefa</span></button>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse text-sm">
-                            <thead>
-                                <tr class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200">
-                                    <th class="p-4 w-1/3 rounded-tl-xl">Descrição da Atividade</th>
-                                    <th class="p-4">Prazo Limite</th>
-                                    <th class="p-4">Responsável</th>
-                                    <th class="p-4">Status</th>
-                                    <th class="p-4 text-center rounded-tr-xl">Ações</th>
-                                </tr>
-                            </thead>
+                            <thead><tr class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200">
+                                <th class="p-4 w-1/3 rounded-tl-xl">Descrição da Atividade</th><th class="p-4">Prazo Limite</th><th class="p-4">Responsável</th><th class="p-4">Status</th><th class="p-4 text-center rounded-tr-xl">Ações</th>
+                            </tr></thead>
                             <tbody id="listaTarefas" class="divide-y divide-slate-100"></tbody>
                         </table>
                     </div>
@@ -215,10 +185,7 @@
             <div id="secao-rotinas" class="hidden space-y-6 fade-in max-w-7xl mx-auto">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
                     <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-                        <div>
-                            <h2 class="text-lg font-bold text-slate-800">Painel de Rotinas Fixas</h2>
-                            <p class="text-xs text-slate-500 mt-1 font-medium">Controle de envio de VA, Prêmios e Tomadores. Editável caso as datas mudem.</p>
-                        </div>
+                        <div><h2 class="text-lg font-bold text-slate-800">Painel de Rotinas Fixas</h2><p class="text-xs text-slate-500 mt-1 font-medium">Controle mensal de VA, Prêmios e Tomadores.</p></div>
                         <div class="text-sm font-bold text-emerald-800 bg-emerald-100 px-4 py-2 rounded-xl border border-emerald-200 shadow-sm" id="mesRotinaAtual"></div>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6" id="cardsRotinas"></div>
@@ -228,13 +195,8 @@
             <div id="secao-responsaveis" class="hidden space-y-6 fade-in max-w-7xl mx-auto">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
                     <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-                        <div>
-                            <h2 class="text-lg font-bold text-slate-800">Diretório de Responsáveis</h2>
-                            <p class="text-xs text-slate-500 mt-1 font-medium">Cadastre quem responde por cada garagem.</p>
-                        </div>
-                        <button onclick="window.abrirModalResponsavel()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-sm font-bold transition shadow-md flex items-center gap-2">
-                            <i class="fa-solid fa-user-plus"></i> <span class="hidden sm:inline">Novo Contato</span>
-                        </button>
+                        <div><h2 class="text-lg font-bold text-slate-800">Diretório de Responsáveis</h2><p class="text-xs text-slate-500 mt-1 font-medium">Cadastre quem responde por cada garagem.</p></div>
+                        <button onclick="window.abrirModalResponsavel()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-sm font-bold transition shadow-md flex items-center gap-2"><i class="fa-solid fa-user-plus"></i> <span class="hidden sm:inline">Novo Contato</span></button>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="cardsResponsaveis"></div>
                 </div>
@@ -249,13 +211,10 @@
                     </button>
                     <textarea id="textoRelatorioExecutivo" rows="12" readonly class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-200 resize-y text-slate-700 leading-relaxed"></textarea>
                     <div class="flex justify-end mt-4">
-                        <button onclick="window.copiarTexto('textoRelatorioExecutivo')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl text-sm font-bold shadow-md transition flex items-center gap-2">
-                            <i class="fa-solid fa-copy"></i> Copiar Relatório
-                        </button>
+                        <button onclick="window.copiarTexto('textoRelatorioExecutivo')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl text-sm font-bold shadow-md transition flex items-center gap-2"><i class="fa-solid fa-copy"></i> Copiar Relatório</button>
                     </div>
                 </div>
             </div>
-
         </div>
     </main>
 
@@ -274,17 +233,14 @@
                     <div>
                         <label class="block text-slate-700 mb-1">Filial *</label>
                         <select id="filialDemanda" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition cursor-pointer">
-                            <option value="Atibaia">Atibaia</option>
-                            <option value="Jundiaí">Jundiaí</option>
-                            <option value="Limeira">Limeira</option>
-                            <option value="Americana">Americana</option>
+                            <option value="Atibaia">Atibaia</option><option value="Jundiaí">Jundiaí</option>
+                            <option value="Limeira">Limeira</option><option value="Americana">Americana</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-slate-700 mb-1">Processo *</label>
                         <select id="tipoProcesso" required onchange="window.verificarTipoProcesso()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition cursor-pointer">
-                            <option value="Rescisão">Rescisão</option>
-                            <option value="Férias">Férias</option>
+                            <option value="Rescisão">Rescisão</option><option value="Férias">Férias</option>
                         </select>
                     </div>
                 </div>
@@ -299,8 +255,8 @@
                     </div>
                 </div>
 
-                <div id="avisoRescisao" class="bg-blue-50 text-blue-800 p-3 rounded-xl border border-blue-200 text-xs font-bold">
-                    <i class="fa-solid fa-circle-info mr-1"></i> O sistema criará as pendências obrigatórias (Relatório, Ponto, Carta) exigindo envio em até 2 dias.
+                <div id="avisoRescisao" class="bg-blue-50 text-blue-800 p-3 rounded-xl border border-blue-200 text-xs font-bold hidden">
+                    <i class="fa-solid fa-circle-info mr-1"></i> O sistema criará as pendências obrigatórias (Relatório, Ponto, Carta).
                 </div>
 
                 <div id="containerMotivo" class="hidden bg-rose-50 p-4 rounded-xl border border-rose-200 space-y-3 mt-4">
@@ -330,6 +286,31 @@
         </div>
     </div>
 
+    <div id="modalDia" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-[65] transition-opacity">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-4 mb-4">
+                <div>
+                    <h3 class="font-bold text-xl text-slate-800" id="tituloModalDia">01 de Janeiro</h3>
+                    <p class="text-xs font-bold text-emerald-600 mt-0.5"><i class="fa-regular fa-calendar-check mr-1"></i> Resumo do Dia</p>
+                </div>
+                <button type="button" onclick="window.fecharModal('modalDia')" class="text-slate-400 hover:text-rose-500 transition bg-slate-50 p-2.5 rounded-xl"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <div class="flex-1 overflow-y-auto pr-2 space-y-5 scrollbar-hide" id="conteudoModalDia">
+                <!-- Preenchido via JS -->
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-between gap-3 pt-5 border-t border-slate-100 mt-4">
+                <button type="button" id="btnNovaDemandaDia" class="bg-emerald-50 text-emerald-700 hover:bg-emerald-100 px-4 py-2.5 rounded-xl font-bold transition flex-1 flex justify-center items-center gap-2 border border-emerald-200 shadow-sm text-sm">
+                    <i class="fa-solid fa-plus"></i> Demanda CLT Aqui
+                </button>
+                <button type="button" id="btnNovaTarefaDia" class="bg-slate-900 text-white hover:bg-slate-800 px-4 py-2.5 rounded-xl font-bold transition flex-1 flex justify-center items-center gap-2 shadow-sm text-sm">
+                    <i class="fa-solid fa-plus"></i> Tarefa Avulsa Aqui
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div id="modalSubtarefas" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-[60]">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
             <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
@@ -351,19 +332,10 @@
                 <button type="button" onclick="window.fecharModal('modalConfigRotina')" class="text-slate-400 hover:text-rose-500 transition"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <form id="formConfigRotina" onsubmit="window.salvarConfigRotina(event)" class="space-y-4 text-sm font-medium">
-                <div>
-                    <label class="block text-slate-700 mb-1">Título</label>
-                    <input type="text" id="cfgRotinaTitulo" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500">
-                </div>
+                <div><label class="block text-slate-700 mb-1">Título</label><input type="text" id="cfgRotinaTitulo" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500"></div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-slate-700 mb-1">Pagamento (Ex: Dia 15)</label>
-                        <input type="text" id="cfgRotinaPgto" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <label class="block text-slate-700 mb-1">Prontidão (Ex: Dia 8)</label>
-                        <input type="text" id="cfgRotinaPronto" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
+                    <div><label class="block text-slate-700 mb-1">Pagamento (Ex: Dia 15)</label><input type="text" id="cfgRotinaPgto" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500"></div>
+                    <div><label class="block text-slate-700 mb-1">Prontidão (Ex: Dia 8)</label><input type="text" id="cfgRotinaPronto" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500"></div>
                 </div>
                 <input type="hidden" id="cfgRotinaId" value="">
                 <div class="flex justify-end gap-3 pt-4 border-t border-slate-100 mt-4">
@@ -380,20 +352,11 @@
                 <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2"><i class="fa-solid fa-list-check text-slate-700"></i> Nova Tarefa Avulsa</h3>
                 <button type="button" onclick="window.fecharModal('modalTarefa')" class="text-slate-400 hover:text-rose-500 transition"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            <form onsubmit="window.salvarTarefa(event)" class="space-y-4 text-sm font-medium">
-                <div>
-                    <label class="block text-slate-700 mb-1">Título da Atividade</label>
-                    <input type="text" id="tituloTarefa" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Ex: Fechar relatório de tomadores">
-                </div>
+            <form id="formTarefa" onsubmit="window.salvarTarefa(event)" class="space-y-4 text-sm font-medium">
+                <div><label class="block text-slate-700 mb-1">Título da Atividade</label><input type="text" id="tituloTarefa" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Ex: Fechar relatório de tomadores"></div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-slate-700 mb-1">Data Início</label>
-                        <input type="date" id="dataInicioTarefa" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
-                    </div>
-                    <div>
-                        <label class="block text-slate-700 mb-1">Prazo Final</label>
-                        <input type="date" id="dataFimTarefa" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
-                    </div>
+                    <div><label class="block text-slate-700 mb-1">Data Início</label><input type="date" id="dataInicioTarefa" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"></div>
+                    <div><label class="block text-slate-700 mb-1">Prazo Final</label><input type="date" id="dataFimTarefa" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"></div>
                 </div>
                 <div>
                     <label class="block text-slate-700 mb-1">Responsável</label>
@@ -413,11 +376,8 @@
                 <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2"><i class="fa-solid fa-address-book text-slate-500"></i> Novo Contato</h3>
                 <button type="button" onclick="window.fecharModal('modalResponsavel')" class="text-slate-400 hover:text-rose-500 transition"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            <form onsubmit="window.salvarResponsavel(event)" class="space-y-4 text-sm font-medium">
-                <div>
-                    <label class="block text-slate-700 mb-1">Nome</label>
-                    <input type="text" id="nomeResp" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Ex: Larissa">
-                </div>
+            <form id="formResponsavel" onsubmit="window.salvarResponsavel(event)" class="space-y-4 text-sm font-medium">
+                <div><label class="block text-slate-700 mb-1">Nome</label><input type="text" id="nomeResp" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Ex: Larissa"></div>
                 <div>
                     <label class="block text-slate-700 mb-1">Filial</label>
                     <select id="filialResp" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
@@ -426,7 +386,7 @@
                 </div>
                 <div>
                     <label class="block text-slate-700 mb-1">WhatsApp (DDD + Número)</label>
-                    <input type="number" id="telResp" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Ex: 11999998888">
+                    <input type="tel" id="telResp" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Ex: (11) 99999-8888">
                 </div>
                 <div class="flex justify-end gap-3 pt-4 border-t border-slate-100 mt-4">
                     <button type="button" onclick="window.fecharModal('modalResponsavel')" class="px-5 py-2.5 rounded-xl text-slate-500 font-bold hover:bg-slate-100">Cancelar</button>
@@ -454,16 +414,12 @@
 
     <div id="modalConfirmacao" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-[70] transition-opacity">
         <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 text-center">
-            <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fa-solid fa-triangle-exclamation text-3xl text-rose-500"></i>
-            </div>
+            <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-triangle-exclamation text-3xl text-rose-500"></i></div>
             <h3 class="font-bold text-xl text-slate-800 mb-2">Atenção!</h3>
             <p class="text-sm text-slate-500 font-medium mb-6" id="textoConfirmacao">Tem certeza que deseja excluir permanentemente este registro?</p>
             <div class="flex justify-center gap-3">
                 <button type="button" onclick="window.fecharConfirmacao()" class="px-5 py-2.5 rounded-xl font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition flex-1">Cancelar</button>
-                <button type="button" id="btnConfirmarExclusao" class="bg-rose-600 hover:bg-rose-700 text-white px-5 py-2.5 rounded-xl font-bold shadow-md transition flex-1 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-trash"></i> Excluir
-                </button>
+                <button type="button" id="btnConfirmarExclusao" class="bg-rose-600 hover:bg-rose-700 text-white px-5 py-2.5 rounded-xl font-bold shadow-md transition flex-1 flex items-center justify-center gap-2"><i class="fa-solid fa-trash"></i> Excluir</button>
             </div>
         </div>
     </div>
@@ -495,33 +451,52 @@
 
         let abaAtiva = 'demandas';
         let mesCalendarioAtual = new Date();
+        let dataModalDiaAberta = null; // Armazena a data caso o modal dia esteja aberto
+
         let demandas = [];
         let tarefas = [];
         let responsaveis = [];
         let rotinasConcluidas = [];
-        
         let rotinasConfig = [
             { id: 'va', titulo: 'Vale Alimentação', pgto: 'Dia 15', pronto: 'Dia 8', desc: 'Solicitação de planilhas e cartões para as garagens.' },
             { id: 'premio', titulo: 'Prêmio Mensal', pgto: 'Dia 20', pronto: 'Dia 13', desc: 'Fechamento de premiações (motoristas e operacionais).' },
-            { id: 'he', titulo: 'Fechamento de Ponto / Tomadores', pgto: 'Folha', pronto: 'Máx. Dia 10', desc: 'Conferência de HE e cartões de ponto de tomadores.' }
+            { id: 'he', titulo: 'Fechamento de Ponto', pgto: 'Folha', pronto: 'Máx. Dia 10', desc: 'Conferência de HE e cartões de ponto de tomadores.' }
         ];
+
+        // Mapeamento de Feriados Estáticos (Nacional + SP + Municipais Solicitados)
+        const feriadosFixos = {
+            "01-01": "Confraternização Univ.", "21-04": "Tiradentes", "01-05": "Dia do Trabalho",
+            "07-09": "Independência", "12-10": "N. Sra. Aparecida", "02-11": "Finados", 
+            "15-11": "Proclamação", "25-12": "Natal", "09-07": "Rev. Const. (SP)",
+            "24-06": "Feriado Municipal (Atibaia)", "15-08": "Padroeira (Jundiaí)", 
+            "14-12": "Aniversário (Jundiaí)", "13-06": "Padroeiro (Americana)", 
+            "27-08": "Aniversário (Americana)", "15-09": "Aniversário (Limeira)"
+        };
 
         async function iniciarApp() {
             try {
                 await signInAnonymously(auth);
-
                 const basePath = ['artifacts', appId, 'public', 'data']; 
 
-                onSnapshot(collection(db, ...basePath, 'demandas'), (snap) => { demandas = snap.docs.map(d => ({ id: d.id, ...d.data() })); debounceUI(); });
-                onSnapshot(collection(db, ...basePath, 'tarefas'), (snap) => { tarefas = snap.docs.map(d => ({ id: d.id, ...d.data() })); debounceUI(); });
-                onSnapshot(collection(db, ...basePath, 'responsaveis'), (snap) => { responsaveis = snap.docs.map(d => ({ id: d.id, ...d.data() })); debounceUI(); });
-                onSnapshot(collection(db, ...basePath, 'rotinas_concluidas'), (snap) => { rotinasConcluidas = snap.docs.map(d => d.id); debounceUI(); });
+                // Adicionado verificação rigorosa de erro no onSnapshot para blindar a nuvem
+                const erroNuvem = (e) => {
+                    console.error("Erro Firebase Sync:", e);
+                    window.mostrarToast("Conexão perdida com a nuvem.", true);
+                    document.getElementById('statusNuvemTexto').innerHTML = '<i class="fa-solid fa-cloud-arrow-down text-[8px]"></i> Desconectado';
+                    document.getElementById('statusNuvemTexto').classList.replace('text-emerald-400', 'text-rose-400');
+                    document.getElementById('statusNuvemIcon').classList.replace('border-emerald-700', 'border-rose-700');
+                };
+
+                onSnapshot(collection(db, ...basePath, 'demandas'), (snap) => { demandas = snap.docs.map(d => ({ id: d.id, ...d.data() })); debounceUI(); }, erroNuvem);
+                onSnapshot(collection(db, ...basePath, 'tarefas'), (snap) => { tarefas = snap.docs.map(d => ({ id: d.id, ...d.data() })); debounceUI(); }, erroNuvem);
+                onSnapshot(collection(db, ...basePath, 'responsaveis'), (snap) => { responsaveis = snap.docs.map(d => ({ id: d.id, ...d.data() })); debounceUI(); }, erroNuvem);
+                onSnapshot(collection(db, ...basePath, 'rotinas_concluidas'), (snap) => { rotinasConcluidas = snap.docs.map(d => d.id); debounceUI(); }, erroNuvem);
                 onSnapshot(collection(db, ...basePath, 'rotinas_config'), (snap) => { 
                     if(snap.docs.length > 0) rotinasConfig = snap.docs.map(d => ({ id: d.id, ...d.data() })); 
                     debounceUI(); 
-                });
+                }, erroNuvem);
 
-            } catch(e) { console.error("Erro Firebase", e); window.mostrarToast("Erro de conexão com a Nuvem", true); }
+            } catch(e) { console.error("Erro Iniciar Firebase", e); window.mostrarToast("Falha geral na Nuvem", true); }
         }
 
         let renderTimer;
@@ -533,11 +508,8 @@
         window.toggleSidebar = () => {
             const side = document.getElementById('sidebar');
             const overlay = document.getElementById('menuOverlay');
-            if(side.classList.contains('sidebar-closed')){
-                side.classList.remove('sidebar-closed'); overlay.classList.remove('hidden');
-            } else {
-                side.classList.add('sidebar-closed'); overlay.classList.add('hidden');
-            }
+            if(side.classList.contains('sidebar-closed')){ side.classList.remove('sidebar-closed'); overlay.classList.remove('hidden');
+            } else { side.classList.add('sidebar-closed'); overlay.classList.add('hidden'); }
         };
 
         window.mudarAba = (aba) => {
@@ -550,9 +522,8 @@
             document.getElementById(`secao-${aba}`).classList.remove('hidden');
             document.getElementById(`menu-${aba}`).className = "w-full flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium text-emerald-400 bg-emerald-500/10 transition-colors";
             
-            const titulos = { demandas: 'Painel de Demandas', calendario: 'Calendário Operacional', tarefas: 'Tarefas e Cálculos', rotinas: 'Rotinas Fixas do Mês', responsaveis: 'Diretório de Contatos', relatorios: 'Relatório Executivo' };
+            const titulos = { demandas: 'Painel de Demandas', calendario: 'Calendário Master', tarefas: 'Tarefas e Cálculos', rotinas: 'Rotinas Fixas do Mês', responsaveis: 'Diretório de Contatos', relatorios: 'Relatório Executivo' };
             document.getElementById('tituloAba').textContent = titulos[aba];
-            
             if(window.innerWidth < 1024) window.toggleSidebar();
             atualizarUI();
         };
@@ -560,6 +531,7 @@
         window.fecharModal = (modalId) => {
             document.getElementById(modalId).classList.remove('flex');
             document.getElementById(modalId).classList.add('hidden');
+            if(modalId === 'modalDia') dataModalDiaAberta = null;
         };
 
         window.mostrarToast = (msg, isError = false) => {
@@ -571,38 +543,27 @@
         };
 
         function atualizarUI() {
-            if(abaAtiva === 'demandas') {
-                window.renderizarPainelDoDia();
-                window.renderizarStatusSemana();
-                window.renderizarDemandas();
-            }
+            if(abaAtiva === 'demandas') { window.renderizarPainelDoDia(); window.renderizarStatusSemana(); window.renderizarDemandas(); }
             if(abaAtiva === 'calendario') window.renderizarCalendario();
             if(abaAtiva === 'tarefas') renderizarTarefas();
             if(abaAtiva === 'rotinas') renderizarRotinas();
             if(abaAtiva === 'responsaveis') renderizarResponsaveis();
+            
+            // Se o modal do dia estiver aberto e a nuvem atualizar, atualiza o modal também
+            if(dataModalDiaAberta && !document.getElementById('modalDia').classList.contains('hidden')) {
+                window.abrirModalDia(dataModalDiaAberta, false);
+            }
         }
 
-        // --- PAINEL DO DIA & SEMANA ---
         window.renderizarPainelDoDia = () => {
             const hojeStr = new Date().toISOString().split('T')[0];
             document.getElementById('labelDataHoje').textContent = new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
-            
-            const lista = document.getElementById('painelHojeLista');
-            lista.innerHTML = '';
-
+            const lista = document.getElementById('painelHojeLista'); lista.innerHTML = '';
             let itensHoje = [];
-            demandas.forEach(d => {
-                if(d.status !== 'Desistência' && d.status !== 'Concluído' && d.prazoLegal === hojeStr) {
-                    itensHoje.push({ titulo: `${d.tipo}: ${d.colaborador}`, filial: d.filial, tipo: 'Demanda' });
-                }
-            });
-            tarefas.forEach(t => {
-                if(t.status !== 'Concluído' && t.dataFim === hojeStr) {
-                    itensHoje.push({ titulo: `Tarefa: ${t.titulo}`, filial: 'Geral', tipo: 'Tarefa' });
-                }
-            });
 
-            // Adiciona rotinas fixas se o dia bater com a prontidão ou pagamento configurado no mês corrente
+            demandas.forEach(d => { if(d.status !== 'Desistência' && d.status !== 'Concluído' && d.prazoLegal === hojeStr) itensHoje.push({ titulo: `${d.tipo}: ${d.colaborador}`, filial: d.filial, tipo: 'Demanda' }); });
+            tarefas.forEach(t => { if(t.status !== 'Concluído' && t.dataFim === hojeStr) itensHoje.push({ titulo: `Tarefa: ${t.titulo}`, filial: 'Geral', tipo: 'Tarefa' }); });
+
             let diaHojeNum = new Date().getDate();
             rotinasConfig.forEach(r => {
                 let diaProntoNum = parseInt(r.pronto.replace(/\D/g, '')) || 0;
@@ -612,112 +573,57 @@
                 }
             });
 
-            if(itensHoje.length === 0) {
-                lista.innerHTML = `<p class="text-xs text-slate-400 italic">Nenhum vencimento crítico para hoje. Excelente!</p>`;
-                return;
-            }
-
+            if(itensHoje.length === 0) { lista.innerHTML = `<p class="text-xs text-slate-400 italic">Nenhum vencimento crítico para hoje. Excelente!</p>`; return; }
             itensHoje.forEach(item => {
-                lista.innerHTML += `
-                    <div class="bg-slate-800/80 border border-slate-700/80 p-2.5 rounded-xl flex justify-between items-center text-xs">
-                        <div>
-                            <span class="font-bold text-white">${item.titulo}</span>
-                            <span class="text-[10px] text-emerald-400 block">${item.filial}</span>
-                        </div>
-                        <span class="bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded text-[10px] uppercase">${item.tipo}</span>
-                    </div>
-                `;
+                lista.innerHTML += `<div class="bg-slate-800/80 border border-slate-700/80 p-2.5 rounded-xl flex justify-between items-center text-xs mb-2"><div><span class="font-bold text-white">${item.titulo}</span><span class="text-[10px] text-emerald-400 block">${item.filial}</span></div><span class="bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded text-[10px] uppercase">${item.tipo}</span></div>`;
             });
         };
 
         window.renderizarStatusSemana = () => {
-            let hoje = new Date();
-            let daqui7Dias = new Date();
-            daqui7Dias.setDate(hoje.getDate() + 7);
-
-            let hojeStr = hoje.toISOString().split('T')[0];
-            let fimSemanaStr = daqui7Dias.toISOString().split('T')[0];
-
+            let hoje = new Date(); let daqui7Dias = new Date(); daqui7Dias.setDate(hoje.getDate() + 7);
+            let hojeStr = hoje.toISOString().split('T')[0]; let fimSemanaStr = daqui7Dias.toISOString().split('T')[0];
             document.getElementById('labelPeriodoSemana').textContent = `${hoje.toLocaleDateString('pt-BR')} até ${daqui7Dias.toLocaleDateString('pt-BR')}`;
-
-            let totalAtrasados = 0;
-            let totalProximos = 0;
-            let totalConcluidosSemana = 0;
+            let tAtrasados = 0; let tProximos = 0; let tConcluidos = 0;
 
             demandas.forEach(d => {
                 if(d.status !== 'Desistência') {
-                    if(d.status === 'Concluído') {
-                        if(d.prazoLegal >= hojeStr && d.prazoLegal <= fimSemanaStr) totalConcluidosSemana++;
-                    } else {
-                        if(d.prazoLegal < hojeStr) totalAtrasados++;
-                        else if(d.prazoLegal >= hojeStr && d.prazoLegal <= fimSemanaStr) totalProximos++;
-                    }
+                    if(d.status === 'Concluído') { if(d.prazoLegal >= hojeStr && d.prazoLegal <= fimSemanaStr) tConcluidos++; } 
+                    else { if(d.prazoLegal < hojeStr) tAtrasados++; else if(d.prazoLegal >= hojeStr && d.prazoLegal <= fimSemanaStr) tProximos++; }
                 }
             });
-
             tarefas.forEach(t => {
-                if(t.status === 'Concluído') {
-                    if(t.dataFim >= hojeStr && t.dataFim <= fimSemanaStr) totalConcluidosSemana++;
-                } else {
-                    if(t.dataFim < hojeStr) totalAtrasados++;
-                    else if(t.dataFim >= hojeStr && t.dataFim <= fimSemanaStr) totalProximos++;
-                }
+                if(t.status === 'Concluído') { if(t.dataFim >= hojeStr && t.dataFim <= fimSemanaStr) tConcluidos++; } 
+                else { if(t.dataFim < hojeStr) tAtrasados++; else if(t.dataFim >= hojeStr && t.dataFim <= fimSemanaStr) tProximos++; }
             });
 
-            const grid = document.getElementById('painelSemanaGrid');
-            grid.innerHTML = `
-                <div class="bg-rose-50 border border-rose-200 p-4 rounded-2xl flex flex-col justify-between">
-                    <span class="text-[10px] font-bold text-rose-700 uppercase tracking-wider">Atrasados (Atenção)</span>
-                    <div class="text-2xl font-black text-rose-800 mt-2">${totalAtrasados}</div>
-                    <span class="text-[10px] text-rose-600 font-medium mt-1">Requer cobrança imediata</span>
-                </div>
-                <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex flex-col justify-between">
-                    <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider">Próximos 7 Dias</span>
-                    <div class="text-2xl font-black text-amber-800 mt-2">${totalProximos}</div>
-                    <span class="text-[10px] text-amber-600 font-medium mt-1">Vencem esta semana</span>
-                </div>
-                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex flex-col justify-between">
-                    <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider">Concluídos na Semana</span>
-                    <div class="text-2xl font-black text-emerald-800 mt-2">${totalConcluidosSemana}</div>
-                    <span class="text-[10px] text-emerald-600 font-medium mt-1">Entregas realizadas</span>
-                </div>
-            `;
+            document.getElementById('painelSemanaGrid').innerHTML = `
+                <div class="bg-rose-50 border border-rose-200 p-4 rounded-2xl flex flex-col justify-between"><span class="text-[10px] font-bold text-rose-700 uppercase tracking-wider">Atrasados (Atenção)</span><div class="text-2xl font-black text-rose-800 mt-2">${tAtrasados}</div><span class="text-[10px] text-rose-600 font-medium mt-1">Requer cobrança</span></div>
+                <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex flex-col justify-between"><span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider">Próximos 7 Dias</span><div class="text-2xl font-black text-amber-800 mt-2">${tProximos}</div><span class="text-[10px] text-amber-600 font-medium mt-1">Vencem esta semana</span></div>
+                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex flex-col justify-between"><span class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider">Concluídos na Semana</span><div class="text-2xl font-black text-emerald-800 mt-2">${tConcluidos}</div><span class="text-[10px] text-emerald-600 font-medium mt-1">Entregas realizadas</span></div>`;
         };
 
         function calcularPrazo(dataBase, tipo) {
             let d = new Date(dataBase + 'T12:00:00');
-            if(tipo === 'Rescisão') d.setDate(d.getDate() + 10);
-            else d.setDate(d.getDate() - 4);
-            if(d.getDay() === 6) d.setDate(d.getDate() - 1);
-            if(d.getDay() === 0) d.setDate(d.getDate() - 2);
+            if(tipo === 'Rescisão') d.setDate(d.getDate() + 10); else d.setDate(d.getDate() - 4);
+            if(d.getDay() === 6) d.setDate(d.getDate() - 1); if(d.getDay() === 0) d.setDate(d.getDate() - 2);
             return d.toISOString().split('T')[0];
         }
-
-        function somarDiasCorridos(dataBase, dias) {
-            let d = new Date(dataBase + 'T12:00:00');
-            d.setDate(d.getDate() + dias);
-            return d.toISOString().split('T')[0];
-        }
+        function somarDiasCorridos(dataBase, dias) { let d = new Date(dataBase + 'T12:00:00'); d.setDate(d.getDate() + dias); return d.toISOString().split('T')[0]; }
 
         window.renderizarDemandas = () => {
-            const grid = document.getElementById('gridDemandas');
-            const vazio = document.getElementById('vazioDemandas');
+            const grid = document.getElementById('gridDemandas'); const vazio = document.getElementById('vazioDemandas');
             const busca = document.getElementById('buscaDemanda').value.toLowerCase();
-            const fFilial = document.getElementById('filtroFilial').value;
-            const fStatus = document.getElementById('filtroStatus').value;
-            
+            const fFilial = document.getElementById('filtroFilial').value; const fStatus = document.getElementById('filtroStatus').value;
             grid.innerHTML = '';
             
             let filtradas = demandas.filter(d => {
                 let mB = d.colaborador.toLowerCase().includes(busca) || d.filial.toLowerCase().includes(busca);
                 let mF = !fFilial || d.filial === fFilial;
-                
                 let mS = true;
                 if(fStatus === 'Ativos') mS = (d.status === 'Pendente' || d.status === 'Em Andamento');
                 if(fStatus === 'Pendente') mS = (d.status === 'Pendente' || d.status === 'Em Andamento');
                 if(fStatus === 'Concluído') mS = d.status === 'Concluído';
                 if(fStatus === 'Desistência') mS = d.status === 'Desistência';
-                
                 return mB && mF && mS;
             });
 
@@ -728,38 +634,29 @@
             const frag = document.createDocumentFragment();
 
             filtradas.forEach(d => {
-                let pct = 0;
-                let temFases = false;
-                let fasesPendentesParaEmail = "";
-                
+                let pct = 0; let temFases = false; let fasesPend = "";
                 if(d.subtarefas && d.subtarefas.length > 0) {
-                    temFases = true;
-                    let concluidos = d.subtarefas.filter(s => s.feito).length;
+                    temFases = true; let concluidos = d.subtarefas.filter(s => s.feito).length;
                     pct = Math.round((concluidos / d.subtarefas.length) * 100);
-                    d.subtarefas.forEach(sub => {
-                        if(!sub.feito) fasesPendentesParaEmail += `- ${sub.nome}\n`;
-                    });
+                    d.subtarefas.forEach(sub => { if(!sub.feito) fasesPend += `- ${sub.nome}\n`; });
                 }
 
-                let isCancelado = d.status === 'Desistência';
-                let opacityClass = isCancelado ? 'opacity-60 bg-slate-50' : 'bg-white hover:shadow-md';
-                let borderClass = isCancelado ? 'border-slate-200' : 'border-slate-200 shadow-sm';
-                let stCor = d.status === 'Pendente' ? 'bg-amber-100 text-amber-800' : (d.status==='Em Andamento'?'bg-blue-100 text-blue-800' : (isCancelado?'bg-slate-200 text-slate-600':'bg-emerald-100 text-emerald-800'));
+                let isCancel = d.status === 'Desistência';
+                let opCls = isCancel ? 'opacity-60 bg-slate-50' : 'bg-white hover:shadow-md';
+                let brdCls = isCancel ? 'border-slate-200' : 'border-slate-200 shadow-sm';
+                let stCor = d.status === 'Pendente' ? 'bg-amber-100 text-amber-800' : (d.status==='Em Andamento'?'bg-blue-100 text-blue-800' : (isCancel?'bg-slate-200 text-slate-600':'bg-emerald-100 text-emerald-800'));
                 
                 let alertaDocs = '';
-                if(d.tipo === 'Rescisão' && d.status !== 'Concluído' && !isCancelado) {
-                    let prazoDocs = somarDiasCorridos(d.dataBase, 2);
-                    let hoje = new Date().toISOString().split('T')[0];
-                    if(prazoDocs < hoje && pct < 100) {
-                        alertaDocs = `<div class="text-[10px] font-bold text-rose-700 bg-rose-50 px-2.5 py-1.5 rounded-lg border border-rose-100 mt-3 shadow-sm flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> Atraso Documental Filial (Venceu ${prazoDocs.split('-').reverse().join('/')})</div>`;
-                    }
+                if(d.tipo === 'Rescisão' && d.status !== 'Concluído' && !isCancel) {
+                    let pDocs = somarDiasCorridos(d.dataBase, 2); let hoje = new Date().toISOString().split('T')[0];
+                    if(pDocs < hoje && pct < 100) alertaDocs = `<div class="text-[10px] font-bold text-rose-700 bg-rose-50 px-2.5 py-1.5 rounded-lg border border-rose-100 mt-3 shadow-sm flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> Atraso Documental Filial (Venceu ${pDocs.split('-').reverse().join('/')})</div>`;
                 }
 
                 let resp = responsaveis.find(r=>r.nome===d.responsavel);
                 let btnWa = resp ? `<a href="https://wa.me/55${resp.telefone}?text=${encodeURIComponent(`Olá, ${resp.nome}! Tudo bem? Consta pendência de ${d.tipo} do(a) ${d.colaborador}. Prazo limite do processo: ${d.prazoLegal.split('-').reverse().join('/')}. Por favor, verificar no sistema.`)}" target="_blank" class="p-2 text-emerald-600 bg-emerald-50 hover:bg-emerald-100 rounded-xl transition shadow-sm" title="Cobrar WhatsApp"><i class="fa-brands fa-whatsapp text-lg"></i></a>` : `<button onclick="window.mostrarToast('Cadastre o telefone do responsável no diretório!', true)" class="p-2 text-slate-400 bg-slate-100 rounded-xl shadow-sm"><i class="fa-brands fa-whatsapp text-lg"></i></button>`;
 
                 let card = document.createElement('div');
-                card.className = `p-5 rounded-2xl border ${borderClass} ${opacityClass} transition relative flex flex-col justify-between`;
+                card.className = `p-5 rounded-2xl border ${brdCls} ${opCls} transition relative flex flex-col justify-between`;
                 card.innerHTML = `
                     <div>
                         <div class="flex justify-between items-start mb-2">
@@ -769,58 +666,36 @@
                             </div>
                             <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg ${stCor} shadow-sm">${d.status}</span>
                         </div>
-                        
                         <div class="flex gap-4 mt-4 mb-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <div class="flex-1">
-                                <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">Processo / Evento</p>
-                                <p class="text-xs font-bold text-slate-700">${d.tipo} <span class="font-medium text-slate-500">(${d.dataBase.split('-').reverse().join('/')})</span></p>
-                            </div>
-                            <div class="flex-1 border-l border-slate-200 pl-4">
-                                <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">Prazo Limite Legal</p>
-                                <p class="text-xs font-bold text-slate-800">${d.prazoLegal.split('-').reverse().join('/')}</p>
-                            </div>
+                            <div class="flex-1"><p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">Processo / Evento</p><p class="text-xs font-bold text-slate-700">${d.tipo} <span class="font-medium text-slate-500">(${d.dataBase.split('-').reverse().join('/')})</span></p></div>
+                            <div class="flex-1 border-l border-slate-200 pl-4"><p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider mb-0.5">Prazo Limite Legal</p><p class="text-xs font-bold text-slate-800">${d.prazoLegal.split('-').reverse().join('/')}</p></div>
                         </div>
-                        
                         ${d.motivo ? `<p class="text-xs text-rose-700 font-bold bg-rose-50 p-2.5 rounded-xl mb-3 border border-rose-200 shadow-sm"><i class="fa-solid fa-circle-exclamation mr-1"></i> Modificado: ${d.motivo}</p>` : ''}
-                        
-                        ${temFases ? `
-                            <div class="mt-2 mb-1">
-                                <div class="flex justify-between text-[10px] font-bold text-slate-500 mb-1.5 uppercase tracking-wide">
-                                    <span>Checklist Documental</span> <span class="${pct === 100 ? 'text-emerald-600' : ''}">${pct}%</span>
-                                </div>
-                                <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden shadow-inner">
-                                    <div class="bg-emerald-500 h-2.5 rounded-full progress-bar-fill" style="width: ${pct}%"></div>
-                                </div>
-                            </div>
-                        ` : ''}
+                        ${temFases ? `<div class="mt-2 mb-1"><div class="flex justify-between text-[10px] font-bold text-slate-500 mb-1.5 uppercase tracking-wide"><span>Checklist Documental</span> <span class="${pct === 100 ? 'text-emerald-600' : ''}">${pct}%</span></div><div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden shadow-inner"><div class="bg-emerald-500 h-2.5 rounded-full progress-bar-fill" style="width: ${pct}%"></div></div></div>` : ''}
                         ${alertaDocs}
                     </div>
-                    
                     <div class="flex items-center justify-between mt-5 pt-4 border-t border-slate-100">
                         <select onchange="window.atualizarStatusDemanda('${d.id}', this.value)" class="text-xs font-bold text-slate-600 bg-white border border-slate-200 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer shadow-sm">
-                            <option value="Pendente" ${d.status==='Pendente'?'selected':''}>Pendente</option>
-                            <option value="Em Andamento" ${d.status==='Em Andamento'?'selected':''}>Em Andamento</option>
-                            <option value="Concluído" ${d.status==='Concluído'?'selected':''}>Concluído</option>
-                            <option value="Desistência" ${d.status==='Desistência'?'selected':''}>Desistência</option>
+                            <option value="Pendente" ${d.status==='Pendente'?'selected':''}>Pendente</option><option value="Em Andamento" ${d.status==='Em Andamento'?'selected':''}>Em Andamento</option>
+                            <option value="Concluído" ${d.status==='Concluído'?'selected':''}>Concluído</option><option value="Desistência" ${d.status==='Desistência'?'selected':''}>Desistência</option>
                         </select>
-                        
                         <div class="flex items-center gap-1.5">
-                            ${temFases ? `<button onclick="window.abrirModalSubtarefas('${d.id}')" title="Checklist Fases" class="p-2 text-slate-500 bg-slate-100 hover:text-emerald-700 hover:bg-emerald-50 rounded-xl transition shadow-sm"><i class="fa-solid fa-list-check"></i></button>` : ''}
-                            <button onclick="window.abrirModalEmailDemanda('${d.colaborador}', '${d.tipo}', '${d.filial}', '${d.prazoLegal}', '${d.responsavel}', \`${fasesPendentesParaEmail}\`)" title="E-mail Cobrança" class="p-2 text-slate-500 bg-slate-100 hover:text-emerald-700 hover:bg-emerald-50 rounded-xl transition shadow-sm"><i class="fa-solid fa-envelope"></i></button>
-                            <button onclick="window.abrirModalNovaDemanda('${d.id}')" title="Editar" class="p-2 text-slate-500 bg-slate-100 hover:text-emerald-700 hover:bg-emerald-50 rounded-xl transition shadow-sm"><i class="fa-solid fa-pen"></i></button>
-                            <button onclick="window.abrirConfirmacao('demanda', '${d.id}')" title="Excluir" class="p-2 text-slate-500 bg-slate-100 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition shadow-sm"><i class="fa-solid fa-trash-can"></i></button>
+                            ${temFases ? `<button onclick="window.abrirModalSubtarefas('${d.id}')" title="Checklist" class="p-2 text-slate-500 bg-slate-100 hover:text-emerald-700 hover:bg-emerald-50 rounded-xl transition shadow-sm"><i class="fa-solid fa-list-check"></i></button>` : ''}
+                            <button onclick="window.abrirModalEmailDemanda('${d.colaborador}', '${d.tipo}', '${d.filial}', '${d.prazoLegal}', '${d.responsavel}', \`${fasesPend}\`)" class="p-2 text-slate-500 bg-slate-100 hover:text-emerald-700 hover:bg-emerald-50 rounded-xl transition shadow-sm"><i class="fa-solid fa-envelope"></i></button>
+                            <button onclick="window.abrirModalNovaDemanda('${d.id}')" class="p-2 text-slate-500 bg-slate-100 hover:text-emerald-700 hover:bg-emerald-50 rounded-xl transition shadow-sm"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="window.abrirConfirmacao('demanda', '${d.id}')" class="p-2 text-slate-500 bg-slate-100 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition shadow-sm"><i class="fa-solid fa-trash-can"></i></button>
                             ${btnWa}
                         </div>
-                    </div>
-                `;
+                    </div>`;
                 frag.appendChild(card);
             });
             grid.appendChild(frag);
         };
 
-        window.abrirModalNovaDemanda = (id=null) => {
+        // Adicionado: Parâmetro opcional `dataPadrao` para quando criar a partir do calendário
+        window.abrirModalNovaDemanda = (id=null, dataPadrao=null) => {
             const sel = document.getElementById('responsavelDemanda');
-            if(responsaveis.length === 0) sel.innerHTML = '<option value="">Cadastre um contato antes...</option>';
+            if(responsaveis.length === 0) sel.innerHTML = '<option value="">Cadastre contato primeiro...</option>';
             else sel.innerHTML = responsaveis.map(r => `<option value="${r.nome}">${r.nome} (${r.filial})</option>`).join('');
             
             document.getElementById('formDemanda').reset();
@@ -828,257 +703,271 @@
             document.getElementById('containerMotivo').classList.add('hidden');
             document.getElementById('tituloModalDemanda').textContent = id ? "Editar Demanda" : "Nova Demanda CLT";
             
+            if(dataPadrao) document.getElementById('dataBase').value = dataPadrao;
+
             if(id) {
                 const d = demandas.find(x=>x.id===id);
                 if(d){
-                    document.getElementById('nomeColaborador').value = d.colaborador;
-                    document.getElementById('filialDemanda').value = d.filial;
-                    document.getElementById('tipoProcesso').value = d.tipo;
-                    document.getElementById('dataBase').value = d.dataBase;
-                    document.getElementById('responsavelDemanda').value = d.responsavel;
-                    document.getElementById('obsDemanda').value = d.obs || '';
-                    document.getElementById('editIdDemanda').value = d.id;
+                    document.getElementById('nomeColaborador').value = d.colaborador; document.getElementById('filialDemanda').value = d.filial;
+                    document.getElementById('tipoProcesso').value = d.tipo; document.getElementById('dataBase').value = d.dataBase;
+                    document.getElementById('responsavelDemanda').value = d.responsavel; document.getElementById('obsDemanda').value = d.obs || '';
+                    document.getElementById('editIdDemanda').value = d.id; document.getElementById('motivoAlteracao').value = d.motivo || '';
                     document.getElementById('containerMotivo').classList.remove('hidden');
                 }
             }
             window.verificarTipoProcesso();
-            document.getElementById('modalDemanda').classList.remove('hidden'); 
-            document.getElementById('modalDemanda').classList.add('flex');
+            window.fecharModal('modalDia'); // Fecha se estiver aberto sobreposto
+            document.getElementById('modalDemanda').classList.remove('hidden'); document.getElementById('modalDemanda').classList.add('flex');
         };
 
         window.verificarTipoProcesso = () => {
-            const tipo = document.getElementById('tipoProcesso').value;
-            const aviso = document.getElementById('avisoRescisao');
-            if(tipo === 'Rescisão' && !document.getElementById('editIdDemanda').value) aviso.classList.remove('hidden');
-            else aviso.classList.add('hidden');
+            if(document.getElementById('tipoProcesso').value === 'Rescisão' && !document.getElementById('editIdDemanda').value) document.getElementById('avisoRescisao').classList.remove('hidden');
+            else document.getElementById('avisoRescisao').classList.add('hidden');
         };
 
         window.salvarDemanda = async (e) => {
             e.preventDefault();
             const id = document.getElementById('editIdDemanda').value;
-            const colaborador = document.getElementById('nomeColaborador').value;
-            const filial = document.getElementById('filialDemanda').value;
-            const tipo = document.getElementById('tipoProcesso').value;
-            const dataBase = document.getElementById('dataBase').value;
-            const responsavel = document.getElementById('responsavelDemanda').value;
-            const obs = document.getElementById('obsDemanda').value;
-            const motivo = document.getElementById('motivoAlteracao').value;
-            const prazoLegal = calcularPrazo(dataBase, tipo);
+            const res = document.getElementById('responsavelDemanda').value;
+            if(!res) { window.mostrarToast("Cadastre um contato responsável!", true); return; }
+
+            const payload = { 
+                colaborador: document.getElementById('nomeColaborador').value.trim(), filial: document.getElementById('filialDemanda').value,
+                tipo: document.getElementById('tipoProcesso').value, dataBase: document.getElementById('dataBase').value,
+                prazoLegal: calcularPrazo(document.getElementById('dataBase').value, document.getElementById('tipoProcesso').value),
+                responsavel: res, obs: document.getElementById('obsDemanda').value.trim(), motivo: document.getElementById('motivoAlteracao').value
+            };
             
-            if(!responsavel) { window.mostrarToast("Cadastre um contato responsável!", true); return; }
-
-            let status = 'Pendente';
-            let subtarefas = [];
-
+            let status = 'Pendente'; let subtarefas = [];
             if(id) {
                 const d = demandas.find(x=>x.id===id);
                 if(d) { status = d.status; subtarefas = d.subtarefas || []; }
-                if(motivo === 'Desistência do Desligamento') status = 'Desistência';
+                if(payload.motivo === 'Desistência do Desligamento') status = 'Desistência';
             } else {
-                if(tipo === 'Rescisão') {
-                    subtarefas = [ {nome:'Relatório de Saída Validado', feito:false}, {nome:'Folha de Ponto (Assinada)', feito:false}, {nome:'Carta de Aviso/Pedido', feito:false} ];
-                }
+                if(payload.tipo === 'Rescisão') subtarefas = [ {nome:'Relatório de Saída Validado', feito:false}, {nome:'Folha de Ponto (Assinada)', feito:false}, {nome:'Carta de Aviso/Pedido', feito:false} ];
             }
-
-            const payload = { colaborador, filial, tipo, dataBase, prazoLegal, responsavel, status, obs, motivo, subtarefas };
-            const docId = id || Date.now().toString();
+            payload.status = status; payload.subtarefas = subtarefas;
             
             try {
-                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'demandas', docId), payload);
-                window.fecharModal('modalDemanda');
-                window.mostrarToast(id ? "Demanda atualizada!" : "Nova demanda criada!");
-            } catch(er) { console.error(er); window.mostrarToast("Erro ao salvar", true); }
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'demandas', id || Date.now().toString()), payload);
+                window.fecharModal('modalDemanda'); window.mostrarToast(id ? "Demanda atualizada!" : "Nova demanda salva!"); e.target.reset();
+            } catch(er) { console.error(er); window.mostrarToast("Erro ao conectar à nuvem", true); }
         };
 
         window.atualizarStatusDemanda = async (id, status) => {
             const d = demandas.find(x=>x.id===id);
             if(d) {
-                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'demandas', id), {...d, status});
-                window.mostrarToast("Status atualizado");
+                try{ await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'demandas', id), {...d, status}); window.mostrarToast("Status atualizado"); }
+                catch(e) { window.mostrarToast("Erro de rede", true); }
             }
         };
 
         window.abrirModalSubtarefas = (id) => {
-            const d = demandas.find(x=>x.id===id);
-            if(!d || !d.subtarefas) return;
+            const d = demandas.find(x=>x.id===id); if(!d || !d.subtarefas) return;
             document.getElementById('subtarefaColabNome').innerHTML = `<span class="font-bold text-slate-700">${d.colaborador}</span> • ${d.tipo}`;
-            
-            const lista = document.getElementById('listaSubtarefas');
-            lista.innerHTML = d.subtarefas.map((s, idx) => `
+            document.getElementById('listaSubtarefas').innerHTML = d.subtarefas.map((s, idx) => `
                 <div class="flex items-center gap-3 p-3 bg-slate-50 border border-slate-200 rounded-xl hover:bg-slate-100 transition cursor-pointer shadow-sm" onclick="window.toggleSubtarefa('${id}', ${idx})">
-                    <div class="w-6 h-6 rounded-lg border flex items-center justify-center transition-colors ${s.feito ? 'bg-emerald-500 border-emerald-500 text-white shadow-inner' : 'bg-white border-slate-300'}">
-                        ${s.feito ? '<i class="fa-solid fa-check text-sm"></i>' : ''}
-                    </div>
+                    <div class="w-6 h-6 rounded-lg border flex items-center justify-center transition-colors ${s.feito ? 'bg-emerald-500 border-emerald-500 text-white shadow-inner' : 'bg-white border-slate-300'}">${s.feito ? '<i class="fa-solid fa-check text-sm"></i>' : ''}</div>
                     <span class="${s.feito ? 'line-through text-slate-400' : 'text-slate-700 font-bold'} text-sm select-none">${s.nome}</span>
                 </div>
             `).join('');
-            
-            document.getElementById('modalSubtarefas').classList.remove('hidden');
-            document.getElementById('modalSubtarefas').classList.add('flex');
+            document.getElementById('modalSubtarefas').classList.remove('hidden'); document.getElementById('modalSubtarefas').classList.add('flex');
         };
 
         window.toggleSubtarefa = async (idDemanda, indexArr) => {
             const d = demandas.find(x=>x.id===idDemanda);
             if(d && d.subtarefas) {
                 d.subtarefas[indexArr].feito = !d.subtarefas[indexArr].feito;
-                window.abrirModalSubtarefas(idDemanda);
-                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'demandas', idDemanda), d);
+                window.abrirModalSubtarefas(idDemanda); // Re-render visual imediato
+                try { await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'demandas', idDemanda), d); }
+                catch(e) { window.mostrarToast("Falha ao salvar checklist", true); }
             }
         };
 
-        window.mudarMesCalendario = (delta) => {
-            mesCalendarioAtual.setMonth(mesCalendarioAtual.getMonth() + delta);
-            window.renderizarCalendario();
-        };
+        window.mudarMesCalendario = (delta) => { mesCalendarioAtual.setMonth(mesCalendarioAtual.getMonth() + delta); window.renderizarCalendario(); };
 
-        // --- CALENDÁRIO COM TAREFAS FIXAS INTEGRADAS ---
         window.renderizarCalendario = () => {
-            const y = mesCalendarioAtual.getFullYear();
-            const m = mesCalendarioAtual.getMonth();
-            const nomeMes = new Date(y, m, 1).toLocaleString('pt-BR', { month: 'long' });
-            document.getElementById('labelMesAnoCalendario').textContent = `${nomeMes} ${y}`;
+            const y = mesCalendarioAtual.getFullYear(); const m = mesCalendarioAtual.getMonth();
+            document.getElementById('labelMesAnoCalendario').textContent = `${new Date(y, m, 1).toLocaleString('pt-BR', { month: 'long' })} ${y}`;
+            const grid = document.getElementById('gridDiasCalendario'); grid.innerHTML = '';
             
-            const primeiroDia = new Date(y, m, 1).getDay();
-            const totalDias = new Date(y, m + 1, 0).getDate();
-            const grid = document.getElementById('gridDiasCalendario');
-            grid.innerHTML = '';
-
+            let primeiroDia = new Date(y, m, 1).getDay(); let totalDias = new Date(y, m + 1, 0).getDate();
             for(let i=0; i<primeiroDia; i++) grid.innerHTML += `<div class="bg-slate-50/50 border-r border-b border-slate-200"></div>`;
             
             let hojeStr = new Date().toISOString().split('T')[0];
 
             for(let d=1; d<=totalDias; d++) {
                 let dataStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                let mesDia = `${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
                 let isHoje = dataStr === hojeStr;
-                
-                let itemsHtml = '';
-                
-                // Demandas CLT
-                demandas.forEach(dem => {
-                    if(dem.status !== 'Desistência' && dem.prazoLegal === dataStr) {
-                        let cor = dem.status==='Concluído' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800 border border-rose-200';
-                        itemsHtml += `<div class="truncate text-[9px] font-bold p-1 rounded-md mt-1 shadow-sm ${cor}" title="${dem.tipo} - ${dem.colaborador}">${dem.tipo.charAt(0)}: ${dem.colaborador.split(' ')[0]}</div>`;
-                    }
-                });
+                let feriado = feriadosFixos[mesDia];
 
-                // Tarefas Avulsas
-                tarefas.forEach(t => {
-                    if(t.dataFim === dataStr) {
-                        itemsHtml += `<div class="truncate text-[9px] font-bold p-1 rounded-md mt-1 bg-slate-800 text-white shadow-sm" title="${t.titulo}">TAR: ${t.titulo}</div>`;
-                    }
-                });
-
-                // Rotinas Fixas do Mês (VA, Prêmio, Tomadores)
+                let cDem = 0; let cTar = 0; let cRot = 0;
+                
+                demandas.forEach(dem => { if(dem.status !== 'Desistência' && dem.prazoLegal === dataStr) cDem++; });
+                tarefas.forEach(t => { if(t.dataFim === dataStr) cTar++; });
                 rotinasConfig.forEach(r => {
-                    let diaProntoNum = parseInt(r.pronto.replace(/\D/g, '')) || 0;
-                    let diaPgtoNum = parseInt(r.pgto.replace(/\D/g, '')) || 0;
-                    
-                    if(d === diaProntoNum) {
-                        itemsHtml += `<div class="truncate text-[9px] font-bold p-1 rounded-md mt-1 bg-amber-100 text-amber-800 border border-amber-200 shadow-sm" title="Prontidão ${r.titulo}">⚡ Prontidão ${r.titulo}</div>`;
-                    }
-                    if(d === diaPgtoNum) {
-                        itemsHtml += `<div class="truncate text-[9px] font-bold p-1 rounded-md mt-1 bg-indigo-100 text-indigo-800 border border-indigo-200 shadow-sm" title="Pagamento ${r.titulo}">💰 Pgto ${r.titulo}</div>`;
-                    }
+                    let dPronto = parseInt(r.pronto.replace(/\D/g, ''))||0; let dPgto = parseInt(r.pgto.replace(/\D/g, ''))||0;
+                    if(d === dPronto || d === dPgto) cRot++;
                 });
-                
-                let cellClass = isHoje ? "bg-emerald-50/30 border-r border-b border-emerald-200 p-1 flex flex-col relative" : "bg-white border-r border-b border-slate-200 p-1 flex flex-col";
+
+                let tags = '';
+                if(feriado) tags += `<div class="text-[9px] bg-purple-100 text-purple-700 p-0.5 rounded mb-0.5 truncate border border-purple-200 text-center shadow-sm font-bold">🎉 Feriado</div>`;
+                if(cDem > 0) tags += `<div class="text-[9px] bg-emerald-100 text-emerald-800 p-0.5 rounded mb-0.5 text-center shadow-sm font-bold">${cDem} Demanda${cDem>1?'s':''}</div>`;
+                if(cTar > 0) tags += `<div class="text-[9px] bg-slate-700 text-white p-0.5 rounded mb-0.5 text-center shadow-sm font-bold">${cTar} Tarefa${cTar>1?'s':''}</div>`;
+                if(cRot > 0) tags += `<div class="text-[9px] bg-amber-100 text-amber-800 p-0.5 rounded text-center shadow-sm border border-amber-200 font-bold">${cRot} Rotina${cRot>1?'s':''}</div>`;
+
+                let cellClass = isHoje ? "bg-emerald-50/30 border-r border-b border-emerald-200 p-1 flex flex-col relative cursor-pointer hover:bg-emerald-100/50 transition" : "bg-white border-r border-b border-slate-200 p-1 flex flex-col cursor-pointer hover:bg-slate-50 transition";
                 let numClass = isHoje ? "w-6 h-6 bg-emerald-500 text-white rounded-md flex items-center justify-center text-xs font-bold self-end shadow-sm" : "text-xs font-bold text-slate-400 self-end m-1";
 
                 grid.innerHTML += `
-                    <div class="${cellClass} min-h-[95px]">
+                    <div onclick="window.abrirModalDia('${dataStr}')" class="${cellClass} min-h-[95px]">
                         <div class="${numClass}">${d}</div>
-                        <div class="flex-1 overflow-y-auto mt-1 scrollbar-hide space-y-1 px-0.5 pb-1">${itemsHtml}</div>
-                    </div>
-                `;
+                        <div class="flex-1 overflow-y-auto mt-1 scrollbar-hide space-y-0.5 px-0.5 pb-1">${tags}</div>
+                    </div>`;
             }
         };
 
+        window.abrirModalDia = (dataStr, showModal = true) => {
+            dataModalDiaAberta = dataStr;
+            let partes = dataStr.split('-');
+            let mesDia = `${partes[1]}-${partes[2]}`;
+            
+            document.getElementById('tituloModalDia').textContent = `${partes[2]}/${partes[1]}/${partes[0]}`;
+            
+            let html = '';
+            
+            // 1. Feriados
+            if(feriadosFixos[mesDia]) {
+                html += `<div><h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 border-b border-slate-100 pb-1">Feriados Mapeados</h4>
+                         <div class="bg-purple-50 border border-purple-200 p-3 rounded-xl text-purple-800 text-sm font-bold flex items-center gap-2 shadow-sm"><i class="fa-solid fa-champagne-glasses"></i> ${feriadosFixos[mesDia]}</div></div>`;
+            }
+
+            // 2. Demandas
+            let dDia = demandas.filter(d => d.status !== 'Desistência' && d.prazoLegal === dataStr);
+            if(dDia.length > 0) {
+                html += `<div class="mt-4"><h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 border-b border-slate-100 pb-1">Prazos de Demandas</h4><div class="space-y-2">`;
+                dDia.forEach(d => {
+                    let cor = d.status==='Concluído' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-rose-50 border-rose-200 text-rose-800';
+                    html += `<div class="border p-3 rounded-xl shadow-sm text-sm ${cor} flex justify-between items-center"><div class="font-bold">${d.tipo}: ${d.colaborador} <span class="block text-[10px] font-medium opacity-80">${d.filial}</span></div><i class="fa-solid fa-chevron-right opacity-50"></i></div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            // 3. Tarefas
+            let tDia = tarefas.filter(t => t.dataFim === dataStr);
+            if(tDia.length > 0) {
+                html += `<div class="mt-4"><h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 border-b border-slate-100 pb-1">Tarefas Avulsas</h4><div class="space-y-2">`;
+                tDia.forEach(t => {
+                    let cor = t.status==='Concluído' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-slate-800 border-slate-700 text-white';
+                    html += `<div class="border p-3 rounded-xl shadow-sm text-sm ${cor} flex justify-between items-center"><div class="font-bold">${t.titulo} <span class="block text-[10px] font-medium opacity-80">Resp: ${t.responsavel}</span></div></div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            // 4. Rotinas
+            let diaNum = parseInt(partes[2]);
+            let rDia = [];
+            rotinasConfig.forEach(r => {
+                let dPronto = parseInt(r.pronto.replace(/\D/g, ''))||0; let dPgto = parseInt(r.pgto.replace(/\D/g, ''))||0;
+                if(diaNum === dPronto) rDia.push({t: r.titulo, m: 'Prontidão (Envio/Check)'});
+                if(diaNum === dPgto) rDia.push({t: r.titulo, m: 'Data de Pagamento'});
+            });
+            if(rDia.length > 0) {
+                html += `<div class="mt-4"><h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 border-b border-slate-100 pb-1">Rotinas do Mês</h4><div class="space-y-2">`;
+                rDia.forEach(r => {
+                    html += `<div class="border border-amber-200 bg-amber-50 p-3 rounded-xl shadow-sm text-sm text-amber-900 flex justify-between items-center"><div class="font-bold">${r.t} <span class="block text-[10px] font-medium opacity-80">${r.m}</span></div></div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            if(html === '') html = `<div class="text-center py-10 text-slate-400 font-medium"><i class="fa-solid fa-mug-hot text-3xl mb-2 opacity-50"></i><br>Dia totalmente livre de pendências!</div>`;
+
+            document.getElementById('conteudoModalDia').innerHTML = html;
+            
+            // Configura os botões de ação do modal
+            document.getElementById('btnNovaDemandaDia').onclick = () => window.abrirModalNovaDemanda(null, dataStr);
+            document.getElementById('btnNovaTarefaDia').onclick = () => window.abrirModalTarefa(dataStr);
+
+            if(showModal) {
+                document.getElementById('modalDia').classList.remove('hidden');
+                document.getElementById('modalDia').classList.add('flex');
+            }
+        };
+
+
         function renderizarRotinas() {
-            const cont = document.getElementById('cardsRotinas');
-            cont.innerHTML = '';
+            const cont = document.getElementById('cardsRotinas'); cont.innerHTML = '';
             const mesAtual = new Date().toISOString().substring(0, 7); 
             document.getElementById('mesRotinaAtual').textContent = `Mês Base: ${new Date().toLocaleString('pt-BR', { month: 'long', year:'numeric' }).toUpperCase()}`;
 
             rotinasConfig.forEach(r => {
-                const idReg = `${r.id}_${mesAtual}`;
-                const feito = rotinasConcluidas.includes(idReg);
-                
+                const idReg = `${r.id}_${mesAtual}`; const feito = rotinasConcluidas.includes(idReg);
                 cont.innerHTML += `
                     <div class="bg-white border ${feito?'border-emerald-300 shadow-md shadow-emerald-50':'border-slate-200 shadow-sm'} rounded-2xl p-6 flex flex-col justify-between transition relative overflow-hidden group">
                         ${feito ? '<div class="absolute -right-4 -top-4 w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center shadow-inner"><i class="fa-solid fa-check text-white text-xl translate-x-[-4px] translate-y-[4px]"></i></div>' : ''}
                         <div>
-                            <div class="flex justify-between items-start mb-3">
-                                <h3 class="font-bold text-slate-800 text-lg">${r.titulo}</h3>
-                                <button onclick="window.abrirModalConfigRotina('${r.id}')" class="text-slate-300 hover:text-slate-800 transition p-1 bg-slate-50 rounded-lg"><i class="fa-solid fa-pen"></i></button>
-                            </div>
-                            <div class="flex gap-2 mb-4">
-                                <span class="bg-slate-100 border border-slate-200 text-slate-700 text-[10px] font-bold px-2.5 py-1 rounded-lg">Pagamento: ${r.pgto}</span>
-                                <span class="bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-lg">Prontidão: ${r.pronto}</span>
-                            </div>
+                            <div class="flex justify-between items-start mb-3"><h3 class="font-bold text-slate-800 text-lg">${r.titulo}</h3><button onclick="window.abrirModalConfigRotina('${r.id}')" class="text-slate-300 hover:text-slate-800 transition p-1 bg-slate-50 rounded-lg"><i class="fa-solid fa-pen"></i></button></div>
+                            <div class="flex gap-2 mb-4"><span class="bg-slate-100 border border-slate-200 text-slate-700 text-[10px] font-bold px-2.5 py-1 rounded-lg">Pagamento: ${r.pgto}</span><span class="bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-lg">Prontidão: ${r.pronto}</span></div>
                             <p class="text-xs text-slate-500 font-medium mb-6 leading-relaxed">${r.desc}</p>
                         </div>
                         <button onclick="window.toggleRotina('${idReg}')" class="w-full py-3 rounded-xl text-sm font-bold transition shadow-sm ${feito?'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-slate-100 hover:text-slate-600 hover:border-slate-200':'bg-slate-900 text-white hover:bg-slate-800'}">
                             ${feito ? '<i class="fa-solid fa-rotate-left mr-1"></i> Desfazer Baixa' : '<i class="fa-solid fa-check-double mr-1"></i> Confirmar Fechamento do Mês'}
                         </button>
-                    </div>
-                `;
+                    </div>`;
             });
         }
         
         window.toggleRotina = async (idReg) => {
-            if(rotinasConcluidas.includes(idReg)) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rotinas_concluidas', idReg));
-            else await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rotinas_concluidas', idReg), {done:true});
+            try {
+                if(rotinasConcluidas.includes(idReg)) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rotinas_concluidas', idReg));
+                else await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rotinas_concluidas', idReg), {done:true});
+            } catch(e) { window.mostrarToast("Falha de conexão.", true); }
         };
 
         window.abrirModalConfigRotina = (id) => {
             const r = rotinasConfig.find(x=>x.id===id);
             if(r) {
-                document.getElementById('cfgRotinaId').value = r.id;
-                document.getElementById('cfgRotinaTitulo').value = r.titulo;
-                document.getElementById('cfgRotinaPgto').value = r.pgto;
-                document.getElementById('cfgRotinaPronto').value = r.pronto;
-                document.getElementById('modalConfigRotina').classList.remove('hidden');
-                document.getElementById('modalConfigRotina').classList.add('flex');
+                document.getElementById('cfgRotinaId').value = r.id; document.getElementById('cfgRotinaTitulo').value = r.titulo;
+                document.getElementById('cfgRotinaPgto').value = r.pgto; document.getElementById('cfgRotinaPronto').value = r.pronto;
+                document.getElementById('modalConfigRotina').classList.remove('hidden'); document.getElementById('modalConfigRotina').classList.add('flex');
             }
         };
         
         window.salvarConfigRotina = async (e) => {
-            e.preventDefault();
-            const id = document.getElementById('cfgRotinaId').value;
-            const r = rotinasConfig.find(x=>x.id===id);
+            e.preventDefault(); const id = document.getElementById('cfgRotinaId').value; const r = rotinasConfig.find(x=>x.id===id);
             if(r) {
-                r.titulo = document.getElementById('cfgRotinaTitulo').value;
-                r.pgto = document.getElementById('cfgRotinaPgto').value;
-                r.pronto = document.getElementById('cfgRotinaPronto').value;
-                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rotinas_config', id), r);
-                window.fecharModal('modalConfigRotina'); 
-                window.mostrarToast("Configuração da rotina atualizada!");
+                r.titulo = document.getElementById('cfgRotinaTitulo').value.trim(); r.pgto = document.getElementById('cfgRotinaPgto').value.trim(); r.pronto = document.getElementById('cfgRotinaPronto').value.trim();
+                try { await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rotinas_config', id), r); window.fecharModal('modalConfigRotina'); window.mostrarToast("Rotina atualizada!"); }
+                catch(err){ window.mostrarToast("Erro ao salvar", true); }
             }
         };
 
-        window.abrirModalTarefa = () => { 
+        // Adicionado: Parametro dataPadrao para aceitar cliques do calendário
+        window.abrirModalTarefa = (dataPadrao = null) => { 
             const sel = document.getElementById('responsavelTarefa');
             if(responsaveis.length===0) sel.innerHTML = '<option value="">Cadastre contato primeiro</option>';
             else sel.innerHTML = responsaveis.map(r=>`<option value="${r.nome}">${r.nome}</option>`).join(''); 
+            
+            document.getElementById('formTarefa').reset(); // Limpa sujeira
+            if(dataPadrao) document.getElementById('dataFimTarefa').value = dataPadrao;
+
+            window.fecharModal('modalDia'); // Fecha se estiver sobreposto
             document.getElementById('modalTarefa').classList.remove('hidden'); document.getElementById('modalTarefa').classList.add('flex'); 
         };
         
         window.salvarTarefa = async(e) => { 
-            e.preventDefault(); 
-            const resp = document.getElementById('responsavelTarefa').value;
+            e.preventDefault(); const resp = document.getElementById('responsavelTarefa').value;
             if(!resp) { window.mostrarToast("Falta o responsável", true); return; }
-            await setDoc(doc(db,'artifacts',appId,'public','data','tarefas',Date.now().toString()),{titulo:document.getElementById('tituloTarefa').value,dataInicio:document.getElementById('dataInicioTarefa').value,dataFim:document.getElementById('dataFimTarefa').value,responsavel:resp,status:'Pendente'}); 
-            window.fecharModal('modalTarefa'); window.mostrarToast("Tarefa salva!"); 
+            try {
+                await setDoc(doc(db,'artifacts',appId,'public','data','tarefas',Date.now().toString()),{
+                    titulo:document.getElementById('tituloTarefa').value.trim(), dataInicio:document.getElementById('dataInicioTarefa').value,
+                    dataFim:document.getElementById('dataFimTarefa').value, responsavel:resp, status:'Pendente'
+                }); 
+                window.fecharModal('modalTarefa'); window.mostrarToast("Tarefa salva!"); e.target.reset();
+            } catch(er) { window.mostrarToast("Erro na conexão", true); }
         };
-        
-        window.abrirModalResponsavel = () => { document.getElementById('modalResponsavel').classList.remove('hidden'); document.getElementById('modalResponsavel').classList.add('flex'); };
-        
-        window.salvarResponsavel = async(e) => { 
-            e.preventDefault(); 
-            await setDoc(doc(db,'artifacts',appId,'public','data','responsaveis',Date.now().toString()),{nome:document.getElementById('nomeResp').value,filial:document.getElementById('filialResp').value,telefone:document.getElementById('telResp').value}); 
-            window.fecharModal('modalResponsavel'); window.mostrarToast("Contato adicionado!"); 
-        };
-        
+
         function renderizarTarefas() {
             const list = document.getElementById('listaTarefas'); list.innerHTML='';
             tarefas.forEach(t=>{
@@ -1090,12 +979,10 @@
                 <tr class="hover:bg-slate-50 transition border-b border-slate-100 group">
                     <td class="p-4 font-bold text-slate-800">${t.titulo}<br><span class="text-[10px] text-slate-400 font-medium font-normal">Início: ${t.dataInicio.split('-').reverse().join('/')}</span></td>
                     <td class="p-4 text-sm font-bold text-slate-700">${t.dataFim.split('-').reverse().join('/')}</td>
-                    <td class="p-4 text-sm font-bold text-slate-600">${t.responsavel}</td>
+                    <td class="p-4 text-sm font-bold text-slate-600">${t.responsavel || 'Sem Resp.'}</td>
                     <td class="p-4">
                         <select onchange="window.atualizarStatusTarefa('${t.id}', this.value)" class="text-[10px] uppercase tracking-wider font-bold rounded-lg px-2 py-1 ${badge} border-0 outline-none cursor-pointer">
-                            <option value="Pendente" ${t.status==='Pendente'?'selected':''}>Pendente</option>
-                            <option value="Em Andamento" ${t.status==='Em Andamento'?'selected':''}>Em Andamento</option>
-                            <option value="Concluído" ${t.status==='Concluído'?'selected':''}>Concluído</option>
+                            <option value="Pendente" ${t.status==='Pendente'?'selected':''}>Pendente</option><option value="Em Andamento" ${t.status==='Em Andamento'?'selected':''}>Em Andamento</option><option value="Concluído" ${t.status==='Concluído'?'selected':''}>Concluído</option>
                         </select>
                     </td>
                     <td class="p-4 text-center">
@@ -1108,25 +995,36 @@
                 </tr>`;
             });
         }
-
         window.atualizarStatusTarefa = async (id, status) => {
             const t = tarefas.find(x=>x.id===id);
-            if(t) { await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'tarefas', id), {...t, status}); window.mostrarToast("Tarefa atualizada"); }
+            if(t) { try { await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'tarefas', id), {...t, status}); window.mostrarToast("Tarefa atualizada"); } catch(e) { window.mostrarToast("Erro", true); } }
         }
 
+        window.abrirModalResponsavel = () => { document.getElementById('modalResponsavel').classList.remove('hidden'); document.getElementById('modalResponsavel').classList.add('flex'); };
+        
+        window.salvarResponsavel = async(e) => { 
+            e.preventDefault(); 
+            const telLimpo = document.getElementById('telResp').value.replace(/\D/g, ''); // Garante que só vão números pra nuvem
+            if(telLimpo.length < 10) { window.mostrarToast("Telefone inválido (faltou DDD)", true); return; }
+
+            try {
+                await setDoc(doc(db,'artifacts',appId,'public','data','responsaveis',Date.now().toString()),{
+                    nome:document.getElementById('nomeResp').value.trim(),
+                    filial:document.getElementById('filialResp').value,
+                    telefone: telLimpo
+                }); 
+                window.fecharModal('modalResponsavel'); window.mostrarToast("Contato adicionado!"); e.target.reset();
+            } catch(er) { window.mostrarToast("Erro ao conectar à nuvem", true); }
+        };
+        
         function renderizarResponsaveis() {
             const cont = document.getElementById('cardsResponsaveis'); cont.innerHTML='';
             responsaveis.forEach(r=>{
                 cont.innerHTML += `
                 <div class="bg-white p-5 border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition"> 
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="font-bold text-slate-800 text-lg">${r.nome}</h4> 
-                        <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-lg uppercase tracking-wider">${r.filial}</span>
-                    </div>
+                    <div class="flex justify-between items-start mb-2"><h4 class="font-bold text-slate-800 text-lg">${r.nome}</h4> <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-lg uppercase tracking-wider">${r.filial}</span></div>
                     <p class="text-sm font-bold text-emerald-600 mt-3 bg-emerald-50 inline-block px-3 py-1.5 rounded-lg border border-emerald-100"><i class="fa-brands fa-whatsapp mr-1"></i> ${r.telefone}</p> 
-                    <div class="mt-5 pt-3 border-t border-slate-100">
-                        <button onclick="window.abrirConfirmacao('responsavel', '${r.id}')" class="text-xs font-bold text-rose-500 hover:text-rose-700 transition flex items-center gap-1"><i class="fa-solid fa-trash-can"></i> Excluir Contato</button>
-                    </div>
+                    <div class="mt-5 pt-3 border-t border-slate-100"><button onclick="window.abrirConfirmacao('responsavel', '${r.id}')" class="text-xs font-bold text-rose-500 hover:text-rose-700 transition flex items-center gap-1"><i class="fa-solid fa-trash-can"></i> Excluir Contato</button></div>
                 </div>`;
             });
         }
@@ -1135,70 +1033,46 @@
             let pends = demandas.filter(d=>d.status==='Pendente'||d.status==='Em Andamento');
             let txt = `📊 RESUMO DP INTEGRADO | Posição em: ${new Date().toLocaleDateString('pt-BR')}\n\n`;
             txt += `🔹 PENDÊNCIAS ATIVAS (CLT):\n`;
-            if(pends.length===0) txt+= `• Nenhuma pendência em atraso ou andamento.\n`;
-            pends.sort((a,b) => new Date(a.prazoLegal) - new Date(b.prazoLegal)).forEach(d=> txt+= `• [Limite: ${d.prazoLegal.split('-').reverse().join('/')}] ${d.colaborador} - ${d.tipo} (${d.filial})\n   ↳ Resp: ${d.responsavel}\n`);
+            if(pends.length===0) txt+= `• Excelente! Nenhuma pendência em atraso ou andamento.\n`;
+            pends.sort((a,b) => new Date(a.prazoLegal) - new Date(b.prazoLegal)).forEach(d=> txt+= `• [Limite: ${d.prazoLegal.split('-').reverse().join('/')}] ${d.colaborador} - ${d.tipo} (${d.filial})\n   ↳ Resp: ${d.responsavel || 'Não Def.'}\n`);
             
             let tarPend = tarefas.filter(t=>t.status!=='Concluído');
             txt += `\n🔹 TAREFAS AVULSAS:\n`;
             if(tarPend.length===0) txt+= `• Nenhuma tarefa pendente.\n`;
-            tarPend.forEach(t=> txt+= `• [Limite: ${t.dataFim.split('-').reverse().join('/')}] ${t.titulo}\n   ↳ Resp: ${t.responsavel}\n`);
+            tarPend.forEach(t=> txt+= `• [Limite: ${t.dataFim.split('-').reverse().join('/')}] ${t.titulo}\n   ↳ Resp: ${t.responsavel || 'Não Def.'}\n`);
             
-            document.getElementById('textoRelatorioExecutivo').value = txt;
-            window.mostrarToast("Dados processados com sucesso!");
+            document.getElementById('textoRelatorioExecutivo').value = txt; window.mostrarToast("Dados processados com sucesso!");
         };
         
         window.copiarTexto = (elementId) => { 
             const el = document.getElementById(elementId);
-            el.select(); document.execCommand('copy'); 
-            window.mostrarToast("Texto copiado para a Área de Transferência!"); 
+            el.select(); document.execCommand('copy'); window.mostrarToast("Copiado para a Área de Transferência!"); 
         };
 
         window.abrirModalEmailDemanda = (nome, tipo, filial, prazo, responsavel, pendencias) => {
-            let txt = `Olá, ${responsavel}! Tudo bem?\n\nPassando para alinharmos o andamento das nossas rotinas de DP.\n\n📌 Detalhes da Demanda:\n• Item: ${nome}\n• Processo: ${tipo}\n• Unidade: ${filial}\n• Prazo Limite: ${prazo.split('-').reverse().join('/')}\n`;
-            
-            if(pendencias && pendencias.trim() !== '') {
-                txt += `\n📋 Itens que aguardam regularização/envio:\n${pendencias}`;
-            }
-
+            let txt = `Olá, ${responsavel || 'Equipe'}! Tudo bem?\n\nPassando para alinharmos o andamento das nossas rotinas de DP.\n\n📌 Detalhes da Demanda:\n• Item: ${nome}\n• Processo: ${tipo}\n• Unidade: ${filial}\n• Prazo Limite: ${prazo.split('-').reverse().join('/')}\n`;
+            if(pendencias && pendencias.trim() !== '') txt += `\n📋 Itens que aguardam regularização/envio:\n${pendencias}`;
             txt += `\nSe puder priorizar a atualização desses itens no sistema, ajudará bastante a evitar imprevistos de última hora.\n\nConto com sua colaboração. Qualquer dúvida, estou à disposição.\n\nAtenciosamente,\nLetícia Francine Moraes - DP Central`;
             
             document.getElementById('textoEmailGerado').value = txt;
-            document.getElementById('modalEmail').classList.remove('hidden');
-            document.getElementById('modalEmail').classList.add('flex');
+            document.getElementById('modalEmail').classList.remove('hidden'); document.getElementById('modalEmail').classList.add('flex');
         };
+        window.copiarTextoEFecharModalEmail = () => { window.copiarTexto('textoEmailGerado'); window.fecharModal('modalEmail'); };
 
-        window.copiarTextoEFecharModalEmail = () => {
-            window.copiarTexto('textoEmailGerado');
-            window.fecharModal('modalEmail');
-        };
-
-        let idParaExcluir = null;
-        let tipoParaExcluir = null;
-
+        let idParaExcluir = null; let tipoParaExcluir = null;
         window.abrirConfirmacao = (tipo, id) => {
-            idParaExcluir = id;
-            tipoParaExcluir = tipo;
+            idParaExcluir = id; tipoParaExcluir = tipo;
             let nomeItem = tipo === 'demanda' ? 'esta demanda' : (tipo === 'tarefa' ? 'esta tarefa' : 'este contato');
             document.getElementById('textoConfirmacao').textContent = `Tem certeza que deseja excluir permanentemente ${nomeItem}?`;
-            document.getElementById('modalConfirmacao').classList.remove('hidden');
-            document.getElementById('modalConfirmacao').classList.add('flex');
+            document.getElementById('modalConfirmacao').classList.remove('hidden'); document.getElementById('modalConfirmacao').classList.add('flex');
         };
-
-        window.fecharConfirmacao = () => {
-            document.getElementById('modalConfirmacao').classList.remove('flex');
-            document.getElementById('modalConfirmacao').classList.add('hidden');
-            idParaExcluir = null;
-            tipoParaExcluir = null;
-        };
+        window.fecharConfirmacao = () => { document.getElementById('modalConfirmacao').classList.remove('flex'); document.getElementById('modalConfirmacao').classList.add('hidden'); idParaExcluir = null; tipoParaExcluir = null; };
 
         document.getElementById('btnConfirmarExclusao').addEventListener('click', async () => {
             if(!idParaExcluir || !tipoParaExcluir) return;
             let path = tipoParaExcluir === 'demanda' ? 'demandas' : (tipoParaExcluir === 'tarefa' ? 'tarefas' : 'responsaveis');
-            try {
-                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', path, idParaExcluir));
-                window.fecharConfirmacao();
-                window.mostrarToast("Excluído com sucesso!");
-            } catch(e) { console.error(e); window.mostrarToast("Erro ao excluir", true); }
+            try { await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', path, idParaExcluir)); window.fecharConfirmacao(); window.mostrarToast("Excluído com sucesso!"); }
+            catch(e) { window.mostrarToast("Falha de permissão ou conexão.", true); }
         });
 
         window.onload = iniciarApp;
